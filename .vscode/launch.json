@@ -1,0 +1,66 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "ProfitCalculation",
+            "request": "launch",
+            "mainClass": "PRACTICE_PROBLEMS.ProfitCalculation",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "BannerApp3",
+            "request": "launch",
+            "mainClass": "UC.BannerApp3",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "HarryAge",
+            "request": "launch",
+            "mainClass": "HarryAge",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "ProfitCalculation",
+            "request": "launch",
+            "mainClass": "ProfitCalculation",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "Run HarryAge",
+            "request": "launch",
+            "mainClass": "HarryAge",
+            "projectName": "sem-2_7ac9ee9e",
+            "cwd": "${workspaceFolder}",
+            "classPaths": [
+                "${workspaceFolder}/PRACTICE_PROBLEMS/LEVEL-1"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "Run ProfitCalculation",
+            "request": "launch",
+            "mainClass": "ProfitCalculation",
+            "projectName": "sem-2_7ac9ee9e",
+            "cwd": "${workspaceFolder}",
+            "classPaths": [
+                "${workspaceFolder}/PRACTICE_PROBLEMS/LEVEL-2"
+            ]
+        },
+        {
+            "type": "java",
+            "name": "Run OOPSBannerApp1",
+            "request": "launch",
+            "mainClass": "UC.OOPSBannerApp1",
+            "projectName": "sem-2_7ac9ee9e",
+            "cwd": "${workspaceFolder}",
+            "classPaths": [
+                "${workspaceFolder}"
+            ]
+        }
+    ]
+}
