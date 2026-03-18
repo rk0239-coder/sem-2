@@ -6,8 +6,8 @@ class HarryAge {
 
         // Creating variables
         String name = "Harry";
-        int birthYear = 2000;
-        int currentYear = 2024;
+        int birthYear = 2008;
+        int currentYear = 2026;
 
         // Calculate age
         int age = currentYear - birthYear;

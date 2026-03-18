@@ -3,6 +3,48 @@
     "configurations": [
         {
             "type": "java",
+            "name": "HarryAge",
+            "request": "launch",
+            "mainClass": "PRACTICE_PROBLEMS.HarryAge",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "SimpleInterest",
+            "request": "launch",
+            "mainClass": "PRACTICE_PROBLEMS.SimpleInterest",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "TemperatureConversion",
+            "request": "launch",
+            "mainClass": "PRACTICE_PROBLEMS.TemperatureConversion",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "QuotientRemainder",
+            "request": "launch",
+            "mainClass": "PRACTICE_PROBLEMS.QuotientRemainder",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "TriangleArea",
+            "request": "launch",
+            "mainClass": "PRACTICE_PROBLEMS.TriangleArea",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "Calculator",
+            "request": "launch",
+            "mainClass": "PRACTICE_PROBLEMS.Calculator",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
             "name": "ProfitCalculation",
             "request": "launch",
             "mainClass": "PRACTICE_PROBLEMS.ProfitCalculation",
