@@ -3,6 +3,55 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DrawChecker",
+            "request": "launch",
+            "mainClass": "DrawChecker",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "WinChecker",
+            "request": "launch",
+            "mainClass": "WinChecker",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "GameLoop",
+            "request": "launch",
+            "mainClass": "GameLoop",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "ComputerMove",
+            "request": "launch",
+            "mainClass": "ComputerMove",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "BoardUpdater",
+            "request": "launch",
+            "mainClass": "BoardUpdater",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "UserInput",
+            "request": "launch",
+            "mainClass": "UserInput",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
+            "name": "SlotConverter",
+            "request": "launch",
+            "mainClass": "SlotConverter",
+            "projectName": "sem-2_7ac9ee9e_f26aa4a5"
+        },
+        {
+            "type": "java",
             "name": "TicTacToe",
             "request": "launch",
             "mainClass": "TicTacToe",
