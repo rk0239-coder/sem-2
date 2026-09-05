@@ -3,6 +3,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "P2_PalindromeChecker",
+            "request": "launch",
+            "mainClass": "P2_PalindromeChecker",
+            "projectName": "sem-2_7ac9ee9e"
+        },
+        {
+            "type": "java",
+            "name": "P1_RockPaperScissorsGame",
+            "request": "launch",
+            "mainClass": "P1_RockPaperScissorsGame",
+            "projectName": "sem-2_7ac9ee9e"
+        },
+        {
+            "type": "java",
             "name": "DrawChecker",
             "request": "launch",
             "mainClass": "DrawChecker",
