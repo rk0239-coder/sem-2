@@ -67,8 +67,10 @@ directly above every `main()` method.
    `public static void main(String[] args)`. Click **Run**.
 3. For Q1/Q2 (console programs), the output appears in the **Terminal**
    panel at the bottom.
-4. For Q3–Q6 (Swing programs), an actual window will pop up on your screen
-   — type into the fields and click the buttons to try it out.
+4. For Q3–Q6, a Swing window opens when a graphical desktop is available.
+  In a headless environment such as this Codespace, they automatically use
+  an interactive terminal version; answer the prompts in the VS Code
+  terminal.
 
 ### Command line way (no VS Code needed)
 Open a terminal **inside this folder** and run, for any file `QN.java`:
@@ -84,9 +86,9 @@ java Q1
 This creates a `Q1.class` file (the compiled bytecode) and then runs it.
 Repeat for Q2 through Q6 the same way.
 
-> Note: Q3–Q6 open a graphical window (Swing), so they need a normal
-> desktop session — they won't run on a headless server or inside an
-> SSH-only terminal with no display.
+> Note: Q3–Q6 use Swing windows when a graphical display is available. In a
+> headless server or Codespace with no display, they run in interactive
+> terminal mode instead.
 
 ---
 

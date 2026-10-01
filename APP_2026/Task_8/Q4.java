@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 public class Q4 extends JFrame {
 
@@ -66,6 +67,39 @@ public class Q4 extends JFrame {
     }
 
     public static void main(String[] args) {
+        if (GraphicsEnvironment.isHeadless()) {
+            runConsoleVersion();
+            return;
+        }
         new Q4();
+    }
+
+    private static void runConsoleVersion() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("User Login");
+        System.out.print("Username: ");
+        String username = scanner.nextLine().trim();
+        System.out.print("Password: ");
+        String password = scanner.nextLine();
+
+        if (username.isEmpty() || password.isEmpty()) {
+            System.out.println("Login failed: enter both username and password.");
+            scanner.close();
+            return;
+        }
+
+        System.out.print("Remember me? (y/n): ");
+        boolean rememberMe = scanner.nextLine().trim().equalsIgnoreCase("y");
+        System.out.print("Receive notifications? (y/n): ");
+        boolean notifications = scanner.nextLine().trim().equalsIgnoreCase("y");
+
+        System.out.println("Welcome, " + username + "!");
+        if (rememberMe) {
+            System.out.println("Remember Me enabled.");
+        }
+        if (notifications) {
+            System.out.println("Notifications enabled.");
+        }
+        scanner.close();
     }
 }

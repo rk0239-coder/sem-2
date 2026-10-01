@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Scanner;
 
 public class Q6 extends JFrame {
 
@@ -89,6 +90,65 @@ public class Q6 extends JFrame {
     }
 
     public static void main(String[] args) {
+        if (java.awt.GraphicsEnvironment.isHeadless()) {
+            runConsoleVersion();
+            return;
+        }
         new Q6();
+    }
+
+    private static void runConsoleVersion() {
+        Scanner scanner = new Scanner(System.in);
+        StringBuilder text = new StringBuilder();
+        String clipboard = "";
+
+        while (true) {
+            System.out.println("\nSimple Text Editor");
+            System.out.println("1. View text");
+            System.out.println("2. Append a line");
+            System.out.println("3. New / Clear");
+            System.out.println("4. Cut all text");
+            System.out.println("5. Copy all text");
+            System.out.println("6. Paste at end");
+            System.out.println("7. Select all");
+            System.out.println("8. Exit");
+            System.out.print("Choose an option: ");
+            String choice = scanner.nextLine().trim();
+
+            switch (choice) {
+                case "1":
+                case "7":
+                    System.out.println("----- Text -----");
+                    System.out.println(text.length() == 0 ? "(empty)" : text.toString());
+                    System.out.println("----------------");
+                    break;
+                case "2":
+                    System.out.print("Line to append: ");
+                    text.append(scanner.nextLine()).append(System.lineSeparator());
+                    break;
+                case "3":
+                    text.setLength(0);
+                    System.out.println("Text cleared.");
+                    break;
+                case "4":
+                    clipboard = text.toString();
+                    text.setLength(0);
+                    System.out.println("Text cut to the editor clipboard.");
+                    break;
+                case "5":
+                    clipboard = text.toString();
+                    System.out.println("Text copied to the editor clipboard.");
+                    break;
+                case "6":
+                    text.append(clipboard);
+                    System.out.println("Clipboard pasted at the end.");
+                    break;
+                case "8":
+                    scanner.close();
+                    return;
+                default:
+                    System.out.println("Choose an option from 1 to 8.");
+            }
+        }
     }
 }
