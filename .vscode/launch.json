@@ -3,6 +3,41 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Q1",
+            "request": "launch",
+            "mainClass": "Q1",
+            "projectName": "sem-2_7ac9ee9e"
+        },
+        {
+            "type": "java",
+            "name": "Q6",
+            "request": "launch",
+            "mainClass": "Q6",
+            "projectName": "sem-2_7ac9ee9e"
+        },
+        {
+            "type": "java",
+            "name": "Q5",
+            "request": "launch",
+            "mainClass": "Q5",
+            "projectName": "sem-2_7ac9ee9e"
+        },
+        {
+            "type": "java",
+            "name": "Q4",
+            "request": "launch",
+            "mainClass": "Q4",
+            "projectName": "sem-2_7ac9ee9e"
+        },
+        {
+            "type": "java",
+            "name": "Q3",
+            "request": "launch",
+            "mainClass": "Q3",
+            "projectName": "sem-2_7ac9ee9e"
+        },
+        {
+            "type": "java",
             "name": "P2_PalindromeChecker",
             "request": "launch",
             "mainClass": "P2_PalindromeChecker",
