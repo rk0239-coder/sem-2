@@ -2,18 +2,17 @@ import java.util.Scanner;
 
 class UserInput {
 
-    // Method to get slot input from user
     public static int getUserSlot() {
         Scanner sc = new Scanner(System.in);
 
         System.out.print("Enter slot number (1-9): ");
-        int slot = sc.nextInt();   // Read integer input
+        int slot = sc.nextInt();
 
-        return slot; // Return the entered value
+        return slot;
     }
 
     public static void main(String[] args) {
-        int userSlot = getUserSlot();  // Method call
+        int userSlot = getUserSlot();
 
         System.out.println("You selected slot: " + userSlot);
     }

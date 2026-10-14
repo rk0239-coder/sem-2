@@ -1,43 +1,3 @@
-/*
- * ASSIGNMENT PROBLEM 2: The Campus Parking Charge Calculator
- *
- * Task:
- * The campus parking lot allows bikes, cars, and trucks, each charged
- * differently based on hours parked. Calculate the charge for every
- * parked vehicle, display it, then display the total charge collected.
- *
- * Input:
- *   Line 1: integer N (number of parked vehicles)
- *   Next N lines: "BIKE Hours" | "CAR Hours" | "TRUCK Hours"
- *
- * Output:
- *   For each vehicle: "VehicleType: Charge" (2 decimals)
- *   Finally: "Total: GrandTotal" (2 decimals)
- *
- * Business Rules:
- *   - BIKE:  Rs. 10 per hour.
- *   - CAR:   Rs. 30 for the first hour, plus Rs. 20 for each additional hour.
- *   - TRUCK: Rs. 50 per hour, with a minimum charge of Rs. 100.
- *
- * Sample Input:
- *   4
- *   BIKE 3
- *   CAR 4
- *   TRUCK 1
- *   CAR 1
- *
- * Expected Output:
- *   BIKE: 30.00
- *   CAR: 90.00
- *   TRUCK: 100.00
- *   CAR: 30.00
- *   Total: 250.00
- *
- * Design note:
- * Each vehicle type is its own class implementing a common Vehicle
- * interface with getCharge(). The main loop calls getCharge()
- * polymorphically, with no explicit type checks.
- */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +57,7 @@ class Truck implements ParkedVehicle {
     @Override
     public double getCharge() {
         double charge = 50.0 * hours;
-        return Math.max(charge, 100.0); // minimum charge of Rs. 100
+        return Math.max(charge, 100.0);
     }
 
     @Override

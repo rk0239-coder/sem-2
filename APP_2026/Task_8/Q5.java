@@ -157,7 +157,7 @@ public class Q5 extends JFrame {
                     return choice;
                 }
             } catch (NumberFormatException ignored) {
-                // Keep prompting until a valid menu option is entered.
+
             }
             System.out.print("Enter a number from " + minimum + " to " + maximum + ": ");
         }

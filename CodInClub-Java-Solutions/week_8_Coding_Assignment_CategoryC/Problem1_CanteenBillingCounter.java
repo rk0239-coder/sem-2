@@ -1,41 +1,3 @@
-/*
- * ASSIGNMENT PROBLEM 1: The Canteen Billing Counter
- *
- * Task:
- * A college canteen serves students, staff, and guests. Each pays a
- * different final amount for the same bill. Calculate the final amount
- * for every bill, display it, then display the total amount collected.
- *
- * Input:
- *   Line 1: integer N (number of bills)
- *   Next N lines: "STUDENT Amount" | "STAFF Amount" | "GUEST Amount"
- *
- * Output:
- *   For each bill: "CustomerType: FinalAmount" (2 decimals)
- *   Finally: "Total: GrandTotal" (2 decimals)
- *
- * Business Rules:
- *   - STUDENT: 10% discount
- *   - STAFF:   5% discount
- *   - GUEST:   full amount + Rs. 10 service charge
- *
- * Sample Input:
- *   3
- *   STUDENT 200
- *   STAFF 300
- *   GUEST 150
- *
- * Expected Output:
- *   STUDENT: 180.00
- *   STAFF: 285.00
- *   GUEST: 160.00
- *   Total: 625.00
- *
- * Design note:
- * Each customer type is its own class implementing a common Customer
- * interface with getFinalAmount(). The billing loop calls getFinalAmount()
- * polymorphically, with no if-else chain checking customer type.
- */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,7 +17,7 @@ class StudentCustomer implements Customer {
 
     @Override
     public double getFinalAmount() {
-        return amount * 0.90; // 10% discount
+        return amount * 0.90;
     }
 
     @Override
@@ -73,7 +35,7 @@ class StaffCustomer implements Customer {
 
     @Override
     public double getFinalAmount() {
-        return amount * 0.95; // 5% discount
+        return amount * 0.95;
     }
 
     @Override
@@ -91,7 +53,7 @@ class GuestCustomer implements Customer {
 
     @Override
     public double getFinalAmount() {
-        return amount + 10; // full amount + Rs. 10 service charge
+        return amount + 10;
     }
 
     @Override

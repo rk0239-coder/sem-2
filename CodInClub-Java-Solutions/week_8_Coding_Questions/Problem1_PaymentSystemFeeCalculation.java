@@ -1,45 +1,3 @@
-/*
- * CODING QUESTION 1: Payment System Fee Calculation
- *
- * Task:
- * A payment processing system handles various transaction types. Each
- * payment method applies a different processing fee. For every
- * transaction, calculate the final amount after applying the applicable
- * fee and display the adjusted amount for each transaction followed by
- * the total amount processed.
- *
- * Input:
- *   Line 1: integer N (number of transactions)
- *   Next N lines: "CARD Amount" | "WALLET Amount" | "BANKTRANSFER Amount"
- *
- * Output:
- *   For each transaction: "PaymentType: AdjustedAmount" (2 decimals)
- *   Finally: "Total: GrandTotal" (2 decimals)
- *
- * Business Rules:
- *   - CARD: 2% processing fee
- *   - WALLET: 1% processing fee
- *   - BANKTRANSFER: no fee
- *
- * Sample Input:
- *   3
- *   CARD 1000
- *   WALLET 500
- *   BANKTRANSFER 2000
- *
- * Expected Output:
- *   CARD: 1020.00
- *   WALLET: 505.00
- *   BANKTRANSFER: 2000.00
- *   Total: 3525.00
- *
- * Design note:
- * Each payment type is modeled as its own class implementing a common
- * Payment interface with one method, getAdjustedAmount(). The main
- * processing loop never checks "if type is CARD" etc. - it simply calls
- * getAdjustedAmount() on whatever Payment object was created, and
- * polymorphism takes care of using the right fee rule.
- */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +17,7 @@ class CardPayment implements Payment {
 
     @Override
     public double getAdjustedAmount() {
-        return amount * 1.02; // 2% processing fee
+        return amount * 1.02;
     }
 
     @Override
@@ -77,7 +35,7 @@ class WalletPayment implements Payment {
 
     @Override
     public double getAdjustedAmount() {
-        return amount * 1.01; // 1% processing fee
+        return amount * 1.01;
     }
 
     @Override
@@ -95,7 +53,7 @@ class BankTransferPayment implements Payment {
 
     @Override
     public double getAdjustedAmount() {
-        return amount; // no fee
+        return amount;
     }
 
     @Override
@@ -106,7 +64,6 @@ class BankTransferPayment implements Payment {
 
 public class Problem1_PaymentSystemFeeCalculation {
 
-    // Factory: the only place that knows about concrete payment types.
     static Payment createPayment(String type, double amount) {
         switch (type) {
             case "CARD":

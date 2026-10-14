@@ -1,44 +1,3 @@
-/*
- * CODING QUESTION 5: Public Transport Fare Calculator
- *
- * Task:
- * A public transport system calculates fares for Bus, Train, and Metro
- * journeys based on distance. Each transport type has its own fare
- * structure. Calculate the fare for a list of journeys and the total fare.
- *
- * Input:
- *   Line 1: integer N (number of journeys)
- *   Next N lines: TransportType Distance [AdditionalParam]
- *     BUS Distance
- *     TRAIN Distance
- *     METRO Distance PeakHourFactor
- *
- * Output:
- *   For each journey: "TransportType: CalculatedFare" (2 decimals)
- *   Finally: "Total: GrandTotalFare" (2 decimals)
- *
- * Business Rules:
- *   - BUS:   $2 base + $0.10/km, capped at a maximum fare of $10.
- *   - TRAIN: $3 base + $0.15/km.
- *   - METRO: ($1.50 base + $0.20/km) * PeakHourFactor.
- *
- * Sample Input:
- *   3
- *   BUS 15
- *   TRAIN 50
- *   METRO 10 1.5
- *
- * Expected Output:
- *   BUS: 3.50
- *   TRAIN: 10.50
- *   METRO: 5.25
- *   Total: 19.25
- *
- * Design note:
- * Each transport type is its own class implementing a common Transport
- * interface with getFare(). The main loop calls getFare() polymorphically
- * without ever branching on the transport type itself.
- */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +18,7 @@ class BusTransport implements Transport {
     @Override
     public double getFare() {
         double fare = 2 + (0.10 * distance);
-        return Math.min(fare, 10); // capped at $10
+        return Math.min(fare, 10);
     }
 
     @Override

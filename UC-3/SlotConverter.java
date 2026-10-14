@@ -1,20 +1,17 @@
 class SlotConverter {
 
-    // Utility method to convert slot to row and column
     public static int[] convertSlotToPosition(int slot) {
 
-        // Convert to zero-based index
         int index = slot - 1;
 
-        // Mathematical mapping
-        int row = index / 3;   // Division → row
-        int col = index % 3;   // Modulo → column
+        int row = index / 3;
+        int col = index % 3;
 
         return new int[]{row, col};
     }
 
     public static void main(String[] args) {
-        int slot = 5; // Example input
+        int slot = 5;
 
         int[] position = convertSlotToPosition(slot);
 

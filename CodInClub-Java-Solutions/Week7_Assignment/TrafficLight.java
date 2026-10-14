@@ -1,27 +1,4 @@
-/*
- * ASSIGNMENT PROBLEM 4: The Traffic Light
- *
- * Scenario:
- * A traffic light cycles through red, green, and yellow, in order.
- *
- * Problem Statement:
- * Design a TrafficLight class where the color can only move forward
- * through its cycle, never be set to an arbitrary color directly.
- *
- * Requirements:
- * - The current color must be private, changed only by a next() method
- *   that moves red -> green -> yellow -> red, in that order.
- * - There must be no method that sets the color directly to any value.
- * - Provide a read-only way to check the current color.
- * - Give the light a final ID, fixed when it's created.
- *
- * Sample:
- *   TrafficLight t = new TrafficLight("TL-9");
- *   t.getColor() -> "RED"
- *   t.next() -> "GREEN"
- *   t.next() -> "YELLOW"
- *   t.next() -> "RED"
- */
+
 public class TrafficLight {
 
     private static final String RED = "RED";
@@ -33,7 +10,7 @@ public class TrafficLight {
 
     public TrafficLight(String id) {
         this.id = id;
-        this.currentColor = RED; // every light starts on red
+        this.currentColor = RED;
     }
 
     public String next() {
@@ -41,7 +18,7 @@ public class TrafficLight {
             currentColor = GREEN;
         } else if (currentColor.equals(GREEN)) {
             currentColor = YELLOW;
-        } else { // currentColor.equals(YELLOW)
+        } else {
             currentColor = RED;
         }
         return currentColor;

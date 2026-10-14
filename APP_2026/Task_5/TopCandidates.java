@@ -34,7 +34,6 @@ public class TopCandidates {
 
         Candidate[] candidates = new Candidate[n];
 
-        // Input
         for (int i = 0; i < n; i++) {
 
             int id = sc.nextInt();
@@ -49,7 +48,6 @@ public class TopCandidates {
                             technical, communication);
         }
 
-        // Sorting
         for (int i = 0; i < n - 1; i++) {
 
             for (int j = i + 1; j < n; j++) {
@@ -69,7 +67,6 @@ public class TopCandidates {
             }
         }
 
-        // Display Top K
         System.out.println("Top " + k + " Candidates:");
 
         for (int i = 0; i < k; i++) {

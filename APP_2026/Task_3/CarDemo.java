@@ -3,19 +3,16 @@ class Car {
     String model;
     double price;
 
-    // Default constructor
     Car() {
         model = "Not Entered";
         price = 0;
     }
 
-    // One parameter constructor
     Car(String model) {
         this.model = model;
         price = 0;
     }
 
-    // Two parameter constructor
     Car(String model, double price) {
         this.model = model;
         this.price = price;

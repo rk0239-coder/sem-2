@@ -1,50 +1,3 @@
-/*
- * CODING QUESTION 4: Examination Question Grader
- *
- * Task:
- * An examination system evaluates answers for Multiple Choice, True/False,
- * and Essay questions, each with its own grading logic. Process a list of
- * questions with provided answers, score each one, then total the score.
- *
- * Input:
- *   Line 1: integer N (number of questions)
- *   Next N lines: QuestionType "QuestionText" "CorrectAnswer" "StudentAnswer" Points
- *     MCQ "What is 2+2?" "4" "4" 10
- *     TF "Water boils at 100C?" "True" "True" 5
- *     ESSAY "Discuss OOP principles" "Polymorphism, Inheritance, Encapsulation" "I talked about Polymorphism and Inheritance." 20
- *
- * Output:
- *   For each question: "QuestionType: Score" (2 decimals)
- *   Finally: "Total Score: OverallScore" (2 decimals)
- *
- * Business Rules:
- *   - MCQ: full points if StudentAnswer exactly matches CorrectAnswer, else 0.
- *   - TF: full points if StudentAnswer exactly matches CorrectAnswer, else 0.
- *   - ESSAY: CorrectAnswer is a comma-separated list of keywords.
- *       * 2+ keywords found (case-insensitive) in StudentAnswer -> 75% of Points
- *       * exactly 1 keyword found                               -> 50% of Points
- *       * 0 keywords found                                      -> 0 points
- *
- * Sample Input:
- *   4
- *   MCQ "What is the capital of France?" "Paris" "Paris" 10
- *   TF "The Earth is flat?" "False" "True" 5
- *   ESSAY "Name two primary OOP principles." "Inheritance, Polymorphism, Encapsulation" "Polymorphism is one." 20
- *   ESSAY "Describe abstraction and composition." "Abstraction, Composition" "I talked about abstraction." 15
- *
- * Expected Output:
- *   MCQ: 10.00
- *   TF: 0.00
- *   ESSAY: 10.00
- *   ESSAY: 7.50
- *   Total Score: 27.50
- *
- * Design note:
- * Each question type is its own class implementing a common Question
- * interface with getScore(). The grading loop calls getScore()
- * polymorphically, with the grading rule for each question type living
- * entirely inside that question's own class.
- */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -102,7 +55,7 @@ class TrueFalseQuestion implements Question {
 }
 
 class EssayQuestion implements Question {
-    private final String correctAnswer; // comma-separated keywords
+    private final String correctAnswer;
     private final String studentAnswer;
     private final int points;
 
@@ -141,7 +94,6 @@ class EssayQuestion implements Question {
 
 public class Problem4_ExaminationQuestionGrader {
 
-    // Matches: TYPE "questionText" "correctAnswer" "studentAnswer" points
     private static final Pattern LINE_PATTERN =
             Pattern.compile("^(\\S+)\\s+\"(.*?)\"\\s+\"(.*?)\"\\s+\"(.*?)\"\\s+(\\d+)\\s*$");
 
@@ -168,7 +120,7 @@ public class Problem4_ExaminationQuestionGrader {
             Matcher m = LINE_PATTERN.matcher(line);
             if (m.matches()) {
                 String type = m.group(1);
-                // group(2) is the question text - not needed for scoring
+
                 String correctAnswer = m.group(3);
                 String studentAnswer = m.group(4);
                 int points = Integer.parseInt(m.group(5));

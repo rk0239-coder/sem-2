@@ -1,44 +1,3 @@
-/*
- * CODING QUESTION 2: Library Item Due Date Calculator
- *
- * Task:
- * A library manages different types of items (Books, DVDs, Magazines).
- * Each item type has a specific borrowing duration. Calculate each
- * borrowed item's due date from the "current date".
- *
- * Input:
- *   Line 1: integer N (number of borrowed items)
- *   Next N lines: ItemType "ItemTitle"
- *     BOOK "The Great Gatsby"
- *     DVD "Inception"
- *     MAGAZINE "National Geographic Jan 2023"
- *
- * Output:
- *   For each item: "ItemTitle: DueDate" (DueDate as YYYY-MM-DD)
- *
- * Business Rules:
- *   - BOOK: 14 days
- *   - DVD: 7 days
- *   - MAGAZINE: 3 days
- *   - "Current date" is fixed at 2023-10-26 for this exercise.
- *
- * Sample Input:
- *   3
- *   BOOK "1984"
- *   DVD "The Matrix"
- *   MAGAZINE "Forbes Issue 500"
- *
- * Expected Output:
- *   1984: 2023-11-09
- *   The Matrix: 2023-11-02
- *   Forbes Issue 500: 2023-10-29
- *
- * Design note:
- * Each item type is its own class extending an abstract LibraryItem that
- * stores the title and exposes getDueDate(). Each subclass only needs to
- * supply its own borrowing period; the main loop calls getDueDate()
- * polymorphically without ever checking the item's concrete type.
- */
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -101,7 +60,6 @@ class Magazine extends LibraryItem {
 
 public class Problem2_LibraryItemDueDateCalculator {
 
-    // Matches: TYPE "quoted title (may contain spaces)"
     private static final Pattern LINE_PATTERN = Pattern.compile("^(\\S+)\\s+\"(.*)\"\\s*$");
 
     static LibraryItem createItem(String type, String title) {
