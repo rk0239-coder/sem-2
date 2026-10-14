@@ -1,0 +1,21 @@
+# Part C — Concept Questions
+
+**1. String immutability and performance.** Once a `String` is created its contents can't change; every "modification" (`+`, `concat`, `replace`) creates a new object. Immutability makes strings thread-safe, cacheable in the string pool and safe as hash keys. But repeated modification in a loop creates many short-lived objects, wasting memory and time (O(n²) copying overall). Use `StringBuilder` (or `StringBuffer` when thread safety is needed), which modifies one buffer in place.
+
+**2. The `this` keyword.** When a constructor parameter has the same name as an instance variable, the parameter shadows the field. `this.name = name;` makes it clear that the left side is the field and the right side is the parameter. Example: in `Student(String name) { this.name = name; }`, without `this` the assignment would just assign the parameter to itself and the field would stay `null`. `this(...)` can also call another constructor of the same class.
+
+**3. Object vs reference variable.** An object is the actual data created on the heap by `new`; a reference variable is a handle (stored on the stack or in a field) that points to an object. Assigning `w2 = w1` copies the reference, not the object, so both variables point to the same object. Changes made through one are visible through the other, and the object is eligible for garbage collection only when no references remain.
+
+**4. Static vs instance variables.** An instance variable belongs to each object and holds that object's own state (e.g. a `Student`'s `name`). A static variable belongs to the class and is shared by all objects (e.g. a `count` of visitors created, or a constant such as `PI`). Prefer static for shared data or utilities that don't depend on one object; prefer instance when each object needs its own value.
+
+**5. `for`, `while`, `do-while`.** `for` is best when the number of iterations is known (iterating over an array by index). `while` suits loops that depend on a condition checked before each pass, such as reading input until end of data. `do-while` always runs the body at least once, so it fits menus or validating input where you must ask first, then check.
+
+**6. Pass-by-value.** Java always passes a copy of the argument. For a primitive, the method receives a copy of the value, so changing it doesn't affect the caller's variable. For an object, the method receives a copy of the reference, so it can modify the object's state, and the caller sees that change; but reassigning the parameter to a new object doesn't change the caller's reference.
+
+**7. Integer division.** When both operands are integers, Java performs integer division and discards the fractional part (`7 / 2` is `3`). To get a precise result, at least one operand must be a floating-point type, so cast explicitly: `(double) total / count`. Casting the final result instead (`(double)(total / count)`) is too late, because the truncation has already happened.
+
+**8. Encapsulation.** Encapsulation bundles data and the methods that operate on it, and hides internal state. Making fields `private` stops outside code from changing them directly; public getters and setters provide controlled access. Setters can validate input (e.g. reject a negative balance), so the object always stays in a valid state, and the internal representation can change without breaking users of the class.
+
+**9. `==` vs `equals()`.** For objects, `==` compares references (are they the same object?), while `equals()` compares logical content. By default `Object.equals()` behaves like `==`. Classes such as `String` override it to compare content, so `new String("a").equals(new String("a"))` is true even though `==` is false. Overriding `equals()` in your own class (and `hashCode()` with it) lets two distinct objects with equal fields be treated as equal.
+
+**10. Overloading vs overriding.** Overloading is multiple methods in the same class with the same name but different parameter lists; the compiler chooses which one at compile time (e.g. `add(int, int)` and `add(double, double)`). Overriding is a subclass providing its own implementation of a superclass method with the same signature; the JVM chooses at run time based on the actual object (e.g. `Card.pay()` overriding `Payment.pay()` when called through a `Payment` reference).
