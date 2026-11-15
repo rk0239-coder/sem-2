@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Attendance Tracker</title>
+    <style>
+        :root { color-scheme: light; font-family: system-ui, sans-serif; color: #172033; background: #f3f6fb; }
+        body { margin: 0; }
+        main { width: min(760px, calc(100% - 32px)); margin: 48px auto; }
+        h1 { margin-bottom: 8px; }
+        .card { padding: 24px; margin: 20px 0; border: 1px solid #dce3ee; border-radius: 12px; background: white; }
+        form { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; align-items: end; }
+        label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+        input, select, button { box-sizing: border-box; min-height: 42px; padding: 8px 10px; border: 1px solid #c8d1df; border-radius: 7px; font: inherit; }
+        button { border: 0; color: white; background: #2457c5; cursor: pointer; font-weight: 650; }
+        button:hover { background: #1946a7; }
+        #message { min-height: 1.5em; color: #9d2929; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 12px 8px; border-bottom: 1px solid #e5eaf1; text-align: left; }
+        th { color: #536176; font-size: 13px; }
+        .empty { color: #64748b; text-align: center; }
+    </style>
+</head>
+<body>
+<main>
+    <h1>Attendance Tracker</h1>
+    <p>Attendance records are loaded from the MySQL server.</p>
+    <section class="card">
+        <h2>Add attendance</h2>
+        <form id="attendance-form">
+            <label>Student name
+                <input name="studentName" maxlength="100" required>
+            </label>
+            <label>Date
+                <input name="date" type="date" required>
+            </label>
+            <label>Status
+                <select name="present">
+                    <option value="true">Present</option>
+                    <option value="false">Absent</option>
+                </select>
+            </label>
+            <button type="submit">Save record</button>
+        </form>
+        <p id="message" role="status" aria-live="polite"></p>
+    </section>
+    <section class="card">
+        <h2>Records from server</h2>
+        <table>
+            <thead><tr><th>Student</th><th>Date</th><th>Status</th></tr></thead>
+            <tbody id="records"></tbody>
+        </table>
+    </section>
+</main>
+<script>
+    const form = document.querySelector("#attendance-form");
+    const recordsBody = document.querySelector("#records");
+    const message = document.querySelector("#message");
+    form.elements.date.value = new Date().toISOString().slice(0, 10);
+
+    async function loadRecords() {
+        const response = await fetch("/api/attendance");
+        if (!response.ok) throw new Error("Could not load attendance from the server.");
+        const records = await response.json();
+        recordsBody.replaceChildren();
+        if (records.length === 0) {
+            const row = document.createElement("tr");
+            const cell = document.createElement("td");
+            cell.colSpan = 3;
+            cell.className = "empty";
+            cell.textContent = "No attendance records yet.";
+            row.append(cell);
+            recordsBody.append(row);
+            return;
+        }
+        for (const record of records) {
+            const row = document.createElement("tr");
+            for (const value of [record.studentName, record.date, record.present ? "Present" : "Absent"]) {
+                const cell = document.createElement("td");
+                cell.textContent = value;
+                row.append(cell);
+            }
+            recordsBody.append(row);
+        }
+    }
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        message.textContent = "";
+        const data = new FormData(form);
+        try {
+            const response = await fetch("/api/attendance", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    studentName: data.get("studentName"),
+                    date: data.get("date"),
+                    present: data.get("present") === "true"
+                })
+            });
+            const result = await response.json();
+            if (!response.ok) throw new Error(result.error || "Could not save the record.");
+            form.elements.studentName.value = "";
+            await loadRecords();
+            message.style.color = "#176b3a";
+            message.textContent = "Attendance saved.";
+        } catch (error) {
+            message.style.color = "#9d2929";
+            message.textContent = error.message;
+        }
+    });
+
+    loadRecords().catch((error) => {
+        message.textContent = error.message;
+    });
+</script>
+</body>
+</html>

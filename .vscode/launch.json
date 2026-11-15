@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "DBConnection",
+            "request": "launch",
+            "mainClass": "DBConnection",
+            "projectName": "sem-2_7ac9ee9e"
+        },
+        {
+            "type": "java",
             "name": "Q1",
             "request": "launch",
             "mainClass": "Q1",
